@@ -11,7 +11,6 @@
 </template>
 
 <script>
-    import pubsub from 'pubsub-js'
 	import MyHeader from './components/MyHeader'
 	import MyList from './components/MyList'
 	import MyFooter from './components/MyFooter.vue'
@@ -37,7 +36,7 @@
 				})
 			},
 			//删除一个todo
-			deleteTodo(_,id){
+			deleteTodo(id){
 				this.todos = this.todos.filter( todo => todo.id !== id )
 			},
 			//全选or取消全选
@@ -63,12 +62,11 @@
 		},
 		mounted(){
 			this.$bus.$on('checkTodo',this.checkTodo)
-			this.pubId = pubsub.subscribe('deleteTodo',this.deleteTodo)
+			this.$bus.$on('deleteTodo',this.deleteTodo)
 		},
 		beforeDestroy(){
 			this.$bus.$off('checkTodo')
-			pubsub.unsubscribe('this.pubId')
-			
+			this.$bus.$off('deleteTodo')
 		}
 	}
 </script>
