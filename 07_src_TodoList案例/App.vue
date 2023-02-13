@@ -20,12 +20,11 @@
 		components:{MyHeader,MyFooter,MyList},
 		data() {
 			return {
-				// todos:[
-        //         {id:'001',title:'喝酒',done:true},
-        //         {id:'002',title:'开车',done:false},
-        //         {id:'003',title:'抽烟',done:true}
-        //     ],
-        todos:JSON.parse(localStorage.getItem('todos')) || []
+				todos:[
+                {id:'001',title:'喝酒',done:true},
+                {id:'002',title:'开车',done:false},
+                {id:'003',title:'抽烟',done:true}
+            ]
 			}
 		},
 		methods: {
@@ -59,17 +58,6 @@
         })
       }
 		},
-    watch: {
-      // todos(value){
-      //   localStorage.setItem('todos',JSON.stringify(value))
-      // }
-      todos:{
-        deep:true,
-        handler(value){
-          localStorage.setItem('todos',JSON.stringify(value))
-        }
-      }
-    },
 	}
 </script>
 
