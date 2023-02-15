@@ -1,18 +1,20 @@
 <template>
   <div class="category">
     <h3>{{title}}</h3>
-    <!-- <ul>
-        <li v-for="item,index in listData" :key="index">{{ item }}</li>
-    </ul> -->
-    <!-- 定义一个插槽，等着组件的使用者进行填充 -->
-    <slot>我是一个默认者，使用者没传入具体结构时出现</slot>
+    <slot :games="games">我是默认内容</slot>
+    
   </div>
 </template>
 
 <script>
 export default {
     name:'Categroy',
-    props:['title']
+    props:['title'],
+    data() {
+      return {
+        games: ['红色警戒', '穿越火线', '劲舞团'], 
+      }
+    },
 }
 </script>
 

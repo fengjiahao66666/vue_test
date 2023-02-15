@@ -1,16 +1,27 @@
 <template>
 	<div class="container">
-		<Category title="美食" :listData="foods">
-			<img src="../01_src_分析脚手架/assets/logo.png" alt="">
-		</Category>
 		<Category title="游戏">
-			<ul>
+		  <template scope="{games}">
+		    <ul>
               <li v-for="(g,index) in games" :key="index">{{ g }}</li>
             </ul>
+		  </template>
         </Category>
-		<Category title="电影">
-			<video controls src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
-		</Category>
+
+		<Category title="游戏">
+		  <template scope="{games}">
+		    <ol>
+              <li style="color: red;" v-for="(g,index) in games" :key="index">{{ g }}</li>
+            </ol>
+		  </template>
+        </Category>
+
+		<Category title="游戏">
+		  <template slot-scope="{games}">
+              <h4 v-for="(g,index) in games" :key="index">{{ g }}</h4>
+		  </template>
+        </Category>
+
 	</div>
 </template>
 
@@ -19,19 +30,15 @@
 	export default {
 		name:'App',
 		components:{Category},
-		data() {
-			return {
-				foods: ['火锅', '烧烤', '小龙虾'], 
-				games: ['红色警戒', '穿越火线', '劲舞团'], 
-				films: ['《教父》', '《拆弹专家》', '《你好，李焕英》']
-			}
-		},
 	}
 </script>
 
 <style scoped>
-	.container{
+	.container,.foot{
 		display: flex;
 		justify-content: space-around;
+	}
+	h4{
+		text-align: center;
 	}
 </style>
