@@ -18,13 +18,13 @@ export default new VueRouter({
 			component:Home,
 			children:[
 				{
-				    path:'news',
+					path:'news',
 					component:News,
 				},
 				{
-				    path:'message',
+					path:'message',
 					component:Message,
-				},
+				}
 			]
 		}
 	]
